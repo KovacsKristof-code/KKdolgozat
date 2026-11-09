@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1><%= title %></h1>
+    <hr>
+    <form method="post">
+        <label for="">Név:  </label> <input type="text" name="name" value="<%= locals.body?.name %>" placeholder="Mi a csoport neve?"> <br>
+        <label for="">E-mail cím:  </label> <input type="text" name="email" value="<%= locals.body?.email %>" placeholder="E-mail cím"> <br>
+        <label for="">Dátum és időpont:  </label> <input type="datetime-local" name="datum" value="<%= locals.body?.datum %>"> <br>
+        <label for="">Emberek száma:  </label> <input type="number" name="nezokSzam" value="<%= locals.body?.nezokSzam %>" placeholder="Csoport létszáma?"> <br>
+
+        <ul>
+        <% if (locals.erList.length > 0) { %>
+         <% locals.erList.forEach(er => { %>
+          <li style="color: red;"><%= er %></li>
+         <% }) %>
+        <% } %>    
+        </ul>
+
+<hr>
+
+        <button type="submit">Feltöltés</button>
+
+    <hr>
+
+        <% if (locals.success) { %>
+         <p style="color: green;">Sikeres foglalás</p>
+        <% } %>
+    </form>
+</body>
+</html>
